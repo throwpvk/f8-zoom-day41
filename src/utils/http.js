@@ -8,7 +8,7 @@ const _send = async (method, path, data = null, config = {}) => {
   try {
     const response = await httpClient.request({
       method,
-      path,
+      url: path,
       data,
       ...config,
     });
@@ -27,21 +27,20 @@ const _send = async (method, path, data = null, config = {}) => {
     }
   }
 };
-
 const get = async (path, config = {}) => {
-  await _send("get", path, null, config);
+  return _send("get", path, null, config);
 };
 const post = async (path, data, config = {}) => {
-  await _send("post", path, data, config);
+  return _send("post", path, data, config);
 };
 const put = async (path, data, config = {}) => {
-  await _send("put", path, data, config);
+  return _send("put", path, data, config);
 };
 const del = async (path, config = {}) => {
-  await _send("delete", path, null, config);
+  return _send("delete", path, null, config);
 };
 const patch = async (path, data, config = {}) => {
-  await _send("patch", path, data, config);
+  return _send("patch", path, data, config);
 };
 
 const http = { get, post, put, del, patch };
