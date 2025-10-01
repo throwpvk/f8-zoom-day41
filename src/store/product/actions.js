@@ -1,11 +1,8 @@
-import { SET_LIST } from "./constant";
+import { SET_LIST } from "./constants";
 
-const setList = (payload) => {
+export const setList = (payload) => {
   return {
     type: SET_LIST,
     payload,
   };
 };
-
-const productActions = { setList };
-export default productActions;

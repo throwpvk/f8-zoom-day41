@@ -1,19 +1,20 @@
 import { Link } from "react-router-dom";
 import style from "./ProductList.module.scss";
-import productActions from "../../store/product/actions";
 import http from "./../../utils/http";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {
+  actions as productActions,
+  useList as useProductList,
+} from "../../store/product";
 
 const ProductList = () => {
   const disPatch = useDispatch();
-  const products = useSelector((state) => state.product.list);
+  const products = useProductList();
 
   useEffect(() => {
     (async () => {
       const response = await http.get("/redux-tasks");
-      console.log(response);
-
       disPatch(productActions.setList(response));
     })();
   }, [disPatch]);

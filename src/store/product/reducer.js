@@ -1,4 +1,4 @@
-import { SET_LIST } from "./constant";
+import { SET_LIST } from "./constants";
 
 const initState = {
   list: [],
