@@ -2,6 +2,8 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "../../components/ScrollToTop";
 import Home from "../../pages/Home";
 import DefaultLayout from "../../layouts/DefaultLayout";
+import ProductList from "../../pages/ProductList";
+import ProductDetail from "../../pages/ProductDetail";
 
 function AppRoutes() {
   return (
@@ -10,6 +12,8 @@ function AppRoutes() {
       <Routes>
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/procducts" element={<ProductList />} />
+          <Route path="/detail" element={<ProductDetail />} />
         </Route>
       </Routes>
     </HashRouter>
