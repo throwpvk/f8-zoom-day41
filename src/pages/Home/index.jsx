@@ -5,7 +5,7 @@ function Home() {
   return (
     <div className={style.home}>
       <h1>Home Page</h1>
-      <Link to="/procducts">Products</Link>
+      <Link to="/products">Products</Link>
     </div>
   );
 }

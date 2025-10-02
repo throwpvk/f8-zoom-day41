@@ -12,8 +12,8 @@ function AppRoutes() {
       <Routes>
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/procducts" element={<ProductList />} />
-          <Route path="/detail" element={<ProductDetail />} />
+          <Route path="/products" element={<ProductList />} />
+          <Route path="/detail/:slug" element={<ProductDetail />} />
         </Route>
       </Routes>
     </HashRouter>

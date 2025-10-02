@@ -1,30 +1,38 @@
-import { Link } from "react-router-dom";
-import style from "./ProductList.module.scss";
-import http from "./../../utils/http";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import style from "./ProductList.module.scss";
 import {
   actions as productActions,
   useList as useProductList,
 } from "../../store/product";
 
 const ProductList = () => {
-  const disPatch = useDispatch();
+  const dispatch = useDispatch();
   const products = useProductList();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    (async () => {
-      const response = await http.get("/redux-tasks");
-      disPatch(productActions.setList(response));
-    })();
-  }, [disPatch]);
+    dispatch(productActions.getList());
+  }, [dispatch]);
+
+  const handleClick = (product) => {
+    navigate(`/detail/${product.slug}`);
+  };
+
   return (
     <div className={style.ProductList}>
       <h1>ProductList Page</h1>
       <ul>
-        {products.map((product) => {
-          return <li key={product.id}>{product.title}</li>;
-        })}
+        {products.map((product) => (
+          <li
+            key={product.id}
+            onClick={() => handleClick(product)}
+            style={{ cursor: "pointer" }}
+          >
+            {product.title}
+          </li>
+        ))}
       </ul>
     </div>
   );
