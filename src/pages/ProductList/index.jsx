@@ -17,6 +17,7 @@ const ProductList = () => {
   }, [dispatch]);
 
   const handleClick = (product) => {
+    dispatch(productActions.setDetail(product));
     navigate(`/detail/${product.slug}`);
   };
 
@@ -30,7 +31,7 @@ const ProductList = () => {
             onClick={() => handleClick(product)}
             style={{ cursor: "pointer" }}
           >
-            {product.title}
+            {product.id}. {product.title}
           </li>
         ))}
       </ul>

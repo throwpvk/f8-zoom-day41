@@ -1,4 +1,4 @@
-import { SET_LIST, GET_LIST } from "./constants";
+import { SET_LIST, GET_LIST, SET_DETAIL } from "./constants";
 import http from "../../utils/http";
 
 export const getList = () => {
@@ -13,6 +13,13 @@ export const getList = () => {
 export const setList = (payload) => {
   return {
     type: SET_LIST,
+    payload,
+  };
+};
+
+export const setDetail = (payload) => {
+  return {
+    type: SET_DETAIL,
     payload,
   };
 };
