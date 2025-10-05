@@ -1,12 +1,18 @@
 import { SET_LIST, GET_LIST, SET_DETAIL } from "./constants";
 import http from "../../utils/http";
+import { actions as uiActions } from "../../store/ui";
 
 export const getList = () => {
   return async (dispatch) => {
     dispatch({ type: GET_LIST });
-    const response = await http.get("/products");
-    const data = response.data;
-    dispatch(setList(data.items));
+    try {
+      dispatch(uiActions.showLoading());
+      const response = await http.get("/products");
+      const data = response.data;
+      dispatch(setList(data.items));
+    } finally {
+      dispatch(uiActions.hideLoading());
+    }
   };
 };
 

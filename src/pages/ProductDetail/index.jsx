@@ -26,15 +26,20 @@ function ProductDetail() {
     }
   }, [dispatch, products, slug, product]);
 
-  if (!product) return <div>Loading...</div>;
   return (
     <div className={style.ProductDetail}>
       <button onClick={() => navigate("/products")}>Back to list</button>
       <h1>ProductDetail Page</h1>
-      <h2>
-        {product.id}. {product.title}
-      </h2>
-      <p>{product.description}</p>
+      {product ? (
+        <>
+          <h2>
+            {product.id}. {product.title}
+          </h2>
+          <p>{product.description}</p>
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
